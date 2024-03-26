@@ -1,16 +1,16 @@
 #pragma once
+#include "DoublyLinkedList.h"
 #include <SFML/Graphics.hpp>
+
 class GameObject {
 public:
 	GameObject();
-	GameObject(float xSize, float ySize);
-	GameObject(float xSize, float ySize, float xPos, float yPos);
 
-	float getXPos();
-	float getYPos();
-	float getXSize();
-	float getYSize();
+	void addWall(sf::RectangleShape* wall);
+
+
+
 protected:
-	sf::RectangleShape hitbox;
+	DoublyLinkedList simpleObjects;
 };
 

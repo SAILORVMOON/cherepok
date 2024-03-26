@@ -32,6 +32,7 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
     window.setFramerateLimit(60);
 
+
     sf::RectangleShape testRect = sf::RectangleShape(sf::Vector2f(100, 200));
     testRect.setFillColor(sf::Color(100, 100, 100));
     testRect.setPosition(sf::Vector2f(100, 100));
@@ -45,7 +46,7 @@ int main() {
         
         sf::Event event;
         while (window.pollEvent(event)) {
-            // "close requested" event: we close the window
+            
             if (event.type == sf::Event::Closed)
                 window.close();
         }
@@ -62,13 +63,16 @@ int main() {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::Down)) {
             yMove++;
         }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::E)) {
+            window.requestFocus();
+        }
         pl.move(xMove, yMove);
 
         window.clear(sf::Color::Black);
         for (auto iter = gameObjs.begin(); iter != gameObjs.end(); iter++) {
             window.draw(*iter);
             collision(*iter);
-            window.draw(pl.draw());
+            window.draw(*pl.draw());
         }
         window.display();
     }
